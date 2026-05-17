@@ -11,6 +11,8 @@
 // set the constants here
 // not sure why here but the SFMl game dev book did it here
 const float Game::PlayerSpeed = 100.f;
+const sf::Time Game::TimePerFrame = sf::seconds(1.f/60.f);
+
 
 Game::Game()
 : mainWindow(sf::VideoMode(640, 480), "SFML Application")
@@ -36,11 +38,22 @@ void Game::run()
 
     // make a clock so we can track the time between each frame
     sf::Clock clock;
+
+    // this line is to make the update logic update at a fixed interval to avoid issues with B
+    sf::Time timeSinceLastUpdate = sf::Time::Zero;
     while (mainWindow.isOpen())
     {
-        sf::Time dt = clock.restart();
+        // this outer call is to help with responsiveness
+        // say we pressed the close button if we only had the inner one it would take 16.6ms to
+        // respond which can feel slow to a user
         processEvents();
-        update(dt);
+        timeSinceLastUpdate += clock.restart();
+
+        while (timeSinceLastUpdate > TimePerFrame) {
+            timeSinceLastUpdate -= TimePerFrame;
+            processEvents();
+            update(TimePerFrame);
+        }
         render();
     }
 }

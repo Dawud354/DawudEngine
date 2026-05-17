@@ -18,6 +18,7 @@ private:
     void handlePlayerInput(sf::Keyboard::Key key, bool isPressed);
 
     static const float PlayerSpeed;
+    static const sf::Time TimePerFrame;
 
     sf::RenderWindow mainWindow;
     sf::CircleShape  mainPlayer;
