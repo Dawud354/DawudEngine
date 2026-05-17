@@ -13,9 +13,11 @@ public:
     void run();
 private:
     void processEvents();
-    void update();
+    void update(sf::Time dt);
     void render();
     void handlePlayerInput(sf::Keyboard::Key key, bool isPressed);
+
+    static const float PlayerSpeed;
 
     sf::RenderWindow mainWindow;
     sf::CircleShape  mainPlayer;

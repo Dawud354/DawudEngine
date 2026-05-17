@@ -8,6 +8,9 @@
 #include <iostream>
 
 
+// set the constants here
+// not sure why here but the SFMl game dev book did it here
+const float Game::PlayerSpeed = 100.f;
 
 Game::Game()
 : mainWindow(sf::VideoMode(640, 480), "SFML Application")
@@ -31,10 +34,13 @@ void Game::run()
 {
     std::cout << "in the game class" << std::endl;
 
+    // make a clock so we can track the time between each frame
+    sf::Clock clock;
     while (mainWindow.isOpen())
     {
+        sf::Time dt = clock.restart();
         processEvents();
-        update();
+        update(dt);
         render();
     }
 }
@@ -58,17 +64,17 @@ void Game::processEvents() {
     }
 }
 
-void Game::update() {
+void Game::update(sf::Time dt){
     sf::Vector2f movement(0.f, 0.f);
     if (isMovingUp)
-        movement.y -= 1.f;
+        movement.y -= PlayerSpeed;
     if (isMovingDown)
-        movement.y += 1.f;
+        movement.y += PlayerSpeed;
     if (isMovingLeft)
-        movement.x -= 1.f;
+        movement.x -= PlayerSpeed;
     if (isMovingRight)
-        movement.x += 1.f;
-    mainPlayer.move(movement);
+        movement.x += PlayerSpeed;
+    mainPlayer.move(movement * dt.asSeconds());
 }
 
 void Game::render() {
