@@ -21,7 +21,8 @@ private:
     static const sf::Time TimePerFrame;
 
     sf::RenderWindow mainWindow;
-    sf::CircleShape  mainPlayer;
+    sf::Texture texture;
+    sf::Sprite  mainPlayer;
 
     bool isMovingUp;
     bool isMovingDown;
