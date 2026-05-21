@@ -2,6 +2,8 @@
 #ifndef DAWUDENGINE_RESOURCEHOLDER_INL
 #define DAWUDENGINE_RESOURCEHOLDER_INL
 
+#include <cassert>
+
 // bit weird we need to include this time before every function
 template <typename Resource, typename Identifier>
 void ResourceHolder<Resource, Identifier>::load(Identifier id,
