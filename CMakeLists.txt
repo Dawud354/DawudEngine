@@ -7,7 +7,9 @@ find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
 
 add_executable(DawudEngine main.cpp
         game.cpp
-        game.h)
+        game.h
+        ResourceHolder.h
+        ResourceHolder.inl)
 
 target_link_libraries(DawudEngine sfml-graphics sfml-window sfml-system)
 
