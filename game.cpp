@@ -4,6 +4,7 @@
 //
 
 #include "game.h"
+#include "ResourceHolder.h"
 
 #include <iostream>
 
@@ -16,7 +17,6 @@ const sf::Time Game::TimePerFrame = sf::seconds(1.f/60.f);
 
 Game::Game()
 : mainWindow(sf::VideoMode(640, 480), "SFML Application")
-, texture()
 , mainPlayer()
 , isMovingUp(false)
 , isMovingDown(false)
@@ -25,12 +25,20 @@ Game::Game()
 {
     std::cout << "making class" << std::endl;
 
-    if (!texture.loadFromFile("Media/Textures/Eagle.png"))
+    // try load resources
+    try
     {
-        // Handle loading error
+        textures.load(Textures::ID::Landscape, "Media/Textures/Desert.png");
+        textures.load(Textures::ID::Airplane, "Media/Textures/Eagle.png");
+    }
+    catch (std::runtime_error& e)
+    {
+        std::cout << "Exception: " << e.what() << std::endl;
+        return;
     }
 
-    mainPlayer.setTexture(texture);
+    // load the plane texture to the mainPlayer
+    mainPlayer.setTexture(textures.get(Textures::ID::Airplane));
     mainPlayer.setPosition(100.f, 100.f);
 }
 
@@ -40,6 +48,9 @@ Game::Game()
 void Game::run()
 {
     std::cout << "in the game class" << std::endl;
+
+
+
 
     // make a clock so we can track the time between each frame
     sf::Clock clock;
