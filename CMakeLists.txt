@@ -12,12 +12,3 @@ add_executable(DawudEngine main.cpp
         ResourceHolder.inl)
 
 target_link_libraries(DawudEngine sfml-graphics sfml-window sfml-system)
-
-# Copy Media folder to build directory
-add_custom_command(TARGET DawudEngine POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_SOURCE_DIR}/Media
-        ${CMAKE_BINARY_DIR}/Media
-    COMMENT "Copying Media folder to build directory"
-)
-
