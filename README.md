@@ -7,3 +7,7 @@ So far I have implemented chapter 1.
 ## TODO:
 
 - Documentation
+
+## Known Bugs
+
+- Resizing Window causes freezing for a while 
