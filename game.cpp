@@ -40,6 +40,7 @@ Game::Game()
     // load the plane texture to the mainPlayer
     mainPlayer.setTexture(textures.get(Textures::ID::Airplane));
     mainPlayer.setPosition(100.f, 100.f);
+    landscape.setTexture(textures.get(Textures::ID::Landscape));
 }
 
 /*
@@ -108,6 +109,7 @@ void Game::update(sf::Time dt){
 
 void Game::render() {
     mainWindow.clear();
+    mainWindow.draw(landscape);
     mainWindow.draw(mainPlayer);
     mainWindow.display();
 }

@@ -8,7 +8,7 @@
 #include <SFML/Graphics.hpp>
 #include "ResourceHolder.h"
 
-// The SFML book had the
+// The SFML book had the namespace here
 namespace Textures
 {
     enum class ID
@@ -33,6 +33,8 @@ private:
 
     sf::RenderWindow mainWindow;
     sf::Sprite  mainPlayer;
+
+    sf::Sprite  landscape;
 
     // This is here to ensure the texture it alive for the whole game
     ResourceHolder<sf::Texture, Textures::ID> textures;
