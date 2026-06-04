@@ -9,6 +9,8 @@ add_executable(DawudEngine main.cpp
         game.cpp
         game.h
         ResourceHolder.h
-        ResourceHolder.inl)
+        ResourceHolder.inl
+        SceneNode.cpp
+        SceneNode.h)
 
 target_link_libraries(DawudEngine sfml-graphics sfml-window sfml-system)
