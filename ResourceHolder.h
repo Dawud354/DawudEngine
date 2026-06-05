@@ -21,8 +21,8 @@ class ResourceHolder {
 
 };
 
-// This is here as for templates we cannot have a cpp file
-// so i am using a .inl and telling the compiler here is the code
+// This is here as for templates we cannot have a cpp file,
+// so I am using a .inl and telling the compiler here is the code
 #include "ResourceHolder.inl"
 
 #endif //DAWUDENGINE_RESOURCEHOLDER_H
