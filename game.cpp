@@ -17,30 +17,8 @@ const sf::Time Game::TimePerFrame = sf::seconds(1.f/60.f);
 
 Game::Game()
 : mainWindow(sf::VideoMode(640, 480), "SFML Application")
-, mainPlayer()
-, isMovingUp(false)
-, isMovingDown(false)
-, isMovingRight(false)
-, isMovingLeft(false)
+, world(mainWindow)
 {
-    std::cout << "making class" << std::endl;
-
-    // try load resources
-    try
-    {
-        textures.load(Textures::ID::Landscape, "Media/Textures/Desert.png");
-        textures.load(Textures::ID::Airplane, "Media/Textures/Eagle.png");
-    }
-    catch (std::runtime_error& e)
-    {
-        std::cout << "Exception: " << e.what() << std::endl;
-        return;
-    }
-
-    // load the plane texture to the mainPlayer
-    mainPlayer.setTexture(textures.get(Textures::ID::Airplane));
-    mainPlayer.setPosition(100.f, 100.f);
-    landscape.setTexture(textures.get(Textures::ID::Landscape));
 }
 
 /*
@@ -48,11 +26,6 @@ Game::Game()
  */
 void Game::run()
 {
-    std::cout << "in the game class" << std::endl;
-
-
-
-
     // make a clock so we can track the time between each frame
     sf::Clock clock;
 
@@ -63,7 +36,9 @@ void Game::run()
         // this outer call is to help with responsiveness
         // say we pressed the close button if we only had the inner one it would take 16.6ms to
         // respond which can feel slow to a user
-        processEvents();
+        // ---------------------------------------
+        // in Chapter 3 the book seemed to remove it but I will keep it commented for now
+        //processEvents();
         timeSinceLastUpdate += clock.restart();
 
         while (timeSinceLastUpdate > TimePerFrame) {
@@ -95,33 +70,17 @@ void Game::processEvents() {
 }
 
 void Game::update(sf::Time dt){
-    sf::Vector2f movement(0.f, 0.f);
-    if (isMovingUp)
-        movement.y -= PlayerSpeed;
-    if (isMovingDown)
-        movement.y += PlayerSpeed;
-    if (isMovingLeft)
-        movement.x -= PlayerSpeed;
-    if (isMovingRight)
-        movement.x += PlayerSpeed;
-    mainPlayer.move(movement * dt.asSeconds());
+    world.update(dt);
 }
 
 void Game::render() {
     mainWindow.clear();
-    mainWindow.draw(landscape);
-    mainWindow.draw(mainPlayer);
+    world.draw();
+
+	mainWindow.setView(mainWindow.getDefaultView());
     mainWindow.display();
 }
 
 void Game::handlePlayerInput(sf::Keyboard::Key key, bool isPressed) {
-    if (key == sf::Keyboard::W)
-        isMovingUp = isPressed;
-    if (key == sf::Keyboard::S)
-        isMovingDown = isPressed;
-    if (key == sf::Keyboard::A)
-        isMovingLeft = isPressed;
-    if (key == sf::Keyboard::D)
-        isMovingRight = isPressed;
 }
 

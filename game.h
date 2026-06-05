@@ -6,17 +6,12 @@
 #define DAWUDENGINE_GAME_H
 
 #include <SFML/Graphics.hpp>
-#include "ResourceHolder.h"
+#include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/System/Time.hpp>
 
-// The SFML book had the namespace here
-namespace Textures
-{
-    enum class ID
-    {
-        Landscape,
-        Airplane,
-    };
-}
+#include "ResourceHolder.h"
+#include "World.h"
+
 
 class Game{
 public:
@@ -32,17 +27,7 @@ private:
     static const sf::Time TimePerFrame;
 
     sf::RenderWindow mainWindow;
-    sf::Sprite  mainPlayer;
-
-    sf::Sprite  landscape;
-
-    // This is here to ensure the texture it alive for the whole game
-    ResourceHolder<sf::Texture, Textures::ID> textures;
-
-    bool isMovingUp;
-    bool isMovingDown;
-    bool isMovingRight;
-    bool isMovingLeft;
+    World world;
 };
 
 
