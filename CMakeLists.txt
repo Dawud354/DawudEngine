@@ -6,8 +6,8 @@ set(CMAKE_CXX_STANDARD 20)
 find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
 
 add_executable(DawudEngine main.cpp
-        game.cpp
-        game.h
+        Game.cpp
+        Game.h
         ResourceHolder.h
         ResourceHolder.inl
         SceneNode.cpp

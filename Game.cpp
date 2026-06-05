@@ -3,7 +3,7 @@
 // This is the main loop of the engine
 //
 
-#include "game.h"
+#include "Game.h"
 #include "ResourceHolder.h"
 
 #include <iostream>
