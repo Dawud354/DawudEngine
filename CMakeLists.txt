@@ -19,6 +19,8 @@ add_executable(DawudEngine main.cpp
         Entity.cpp
         Entity.h
         ResourceIndentifiers.h
+        World.cpp
+        World.h
 )
 
 target_link_libraries(DawudEngine sfml-graphics sfml-window sfml-system)
