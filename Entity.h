@@ -1,0 +1,25 @@
+//
+// Created by dawud on 6/5/26.
+//
+
+#ifndef DAWUDENGINE_ENTITY_H
+#define DAWUDENGINE_ENTITY_H
+
+#include "SceneNode.h"
+
+class Entity : public SceneNode
+{
+public:
+    void setVelocity(const sf::Vector2f& newVelocity);
+    void setVelocity(float vx, float vy);
+    sf::Vector2f getVelocity() const;
+
+
+private:
+    void updateCurrent(sf::Time dt) override;
+
+    sf::Vector2f velocity;
+};
+
+
+#endif //DAWUDENGINE_ENTITY_H
