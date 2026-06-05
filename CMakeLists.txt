@@ -13,6 +13,12 @@ add_executable(DawudEngine main.cpp
         SceneNode.cpp
         SceneNode.h
         SpriteNode.cpp
-        SpriteNode.h)
+        SpriteNode.h
+        Aircraft.cpp
+        Aircraft.h
+        Entity.cpp
+        Entity.h
+        ResourceIndentifiers.h
+)
 
 target_link_libraries(DawudEngine sfml-graphics sfml-window sfml-system)
