@@ -12,7 +12,6 @@
 #include "ResourceIndentifiers.h"
 
 #include <SFML/Graphics/View.hpp>
-#include <SFML/Graphics/RenderWindow.hpp>
 
 
 #include <array>
@@ -20,6 +19,7 @@
 
 
 // Forward declaration
+// Book did it to make the class more ligh
 namespace sf
 {
     class RenderWindow;
