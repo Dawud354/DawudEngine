@@ -11,6 +11,11 @@
 
 #include <vector>
 
+/*
+ * This class is used make our tree structure to store game stuff that is to be drawn
+ * Often most of the stuff inside will be an entity.
+ * The node can have an arbitrary amount of children
+ */
 
 class SceneNode:  public sf::Transformable , public sf::Drawable{
     public:
@@ -35,9 +40,8 @@ class SceneNode:  public sf::Transformable , public sf::Drawable{
 
         virtual void updateCurrent(sf::Time dt);
         void updateChildren(sf::Time dt);
-
-        // book made this private and virtual
-        // i am not sure as to why though. the explanation was very complex
+        // book made this private and override
+        // I am not sure as to why though. the explanation was very complex
         void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
         virtual void drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
         void drawChildren(sf::RenderTarget& target, sf::RenderStates states) const;

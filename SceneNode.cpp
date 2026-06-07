@@ -6,6 +6,10 @@
 
 #include <cassert>
 
+/*
+ * Code is copied from SFML book
+ */
+
 SceneNode::SceneNode() : children(), parent(nullptr) {}
 
 void SceneNode::attachChild(UniquePtr child) {
@@ -14,7 +18,7 @@ void SceneNode::attachChild(UniquePtr child) {
 }
 
 SceneNode::UniquePtr SceneNode::detachChild(const SceneNode &child) {
-    // i think there is a better solution but the SFML book uses this Lambda way
+    // I think there is a better solution but the SFML book uses this Lambda way
     auto found = std::find_if(children.begin(), children.end(),
         [&] (UniquePtr& p) {return p.get() == &child;}
     );
@@ -71,6 +75,8 @@ sf::Vector2f SceneNode::getWorldPosition() const
     return getWorldTransform() * sf::Vector2f();
 }
 
+// This method goes through each parent until it gets to root
+// It applied all the nodes transformations to get the world transforamation
 sf::Transform SceneNode::getWorldTransform() const
 {
     sf::Transform transform = sf::Transform::Identity;
