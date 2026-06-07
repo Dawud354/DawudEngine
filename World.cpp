@@ -4,6 +4,8 @@
 
 #include "World.h"
 
+#include "SpriteNode.h"
+
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Texture.hpp>
 

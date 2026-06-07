@@ -7,7 +7,6 @@
 
 #include "Aircraft.h"
 #include "SceneNode.h"
-#include "SpriteNode.h"
 #include "ResourceHolder.h"
 #include "ResourceIndentifiers.h"
 
@@ -19,7 +18,7 @@
 
 
 // Forward declaration
-// Book did it to make the class more ligh
+// Book did it to make the class more lightweight
 namespace sf
 {
     class RenderWindow;
@@ -36,6 +35,7 @@ private:
     void loadTextures();
     void buildScene();
 
+    // TODO: Change this to an enum class
     enum Layer
     {
         Background,
