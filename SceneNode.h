@@ -15,6 +15,11 @@
 class SceneNode:  public sf::Transformable , public sf::Drawable{
     public:
 
+        // Delete the copy operator and constructor
+        SceneNode(const SceneNode& other) = delete;
+        SceneNode& operator=(const SceneNode& other) = delete;
+
+        // The book originally used a typedef, but I learnt that using is the better new way to do it so I used that instead
         using UniquePtr = std::unique_ptr<SceneNode>;
 
         SceneNode();
