@@ -18,6 +18,7 @@ public:
 private:
     void updateCurrent(sf::Time dt) override;
 
+    // The SFML book made every entity have a velocity. It was just a design choice
     sf::Vector2f velocity;
 };
 
