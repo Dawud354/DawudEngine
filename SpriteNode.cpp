@@ -6,6 +6,12 @@
 
 #include <SFML/Graphics/RenderTarget.hpp>
 
+/*
+ * All copied from SFML book
+ * IDK why most methods are empty but it is something to do with the way the code was constructed
+ * It makes
+ */
+
 SpriteNode::SpriteNode(const sf::Texture& texture)
 : mSprite(texture)
 {

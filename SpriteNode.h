@@ -23,7 +23,7 @@ public:
 
 private:
     // I need to remember to avoid using virtual methods as it is an old c++ thing
-    // I should be using overr
+    // I should be using override
     void drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const override;
 
     sf::Sprite mSprite;
