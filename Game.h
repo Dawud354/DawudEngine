@@ -9,7 +9,6 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/System/Time.hpp>
 
-#include "ResourceHolder.h"
 #include "World.h"
 
 
