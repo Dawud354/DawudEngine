@@ -13,6 +13,8 @@ public:
     void setVelocity(const sf::Vector2f& newVelocity);
     void setVelocity(float vx, float vy);
     sf::Vector2f getVelocity() const;
+    void accelerate(sf::Vector2f acceleration);
+    void accelerate(float vx, float vy);
 
 
 private:
