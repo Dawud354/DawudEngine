@@ -11,7 +11,7 @@
 
 
 // A thin wrapper class
-// The class acts as a bridge betwene input an
+// The class acts as a bridge between input and game logi
 // The methods just call the underlying C++ Queue
 class CommandQueue
 {
