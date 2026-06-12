@@ -7,6 +7,8 @@
 
 #include <cassert>
 
+#include "Command.h"
+
 /*
  * Code is copied from SFML book
  */
@@ -91,4 +93,11 @@ sf::Transform SceneNode::getWorldTransform() const
 // Returns the scene category
 unsigned int SceneNode::getCategory() const {
     return Category::Scene;
+}
+
+void SceneNode::onCommand(const Command &command, sf::Time dt) {
+    if (command.category == getCategory())
+        command.action(*this, dt);
+    for (UniquePtr& child : children)
+        child->onCommand(command, dt);
 }

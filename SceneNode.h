@@ -11,6 +11,8 @@
 
 #include <vector>
 
+// forward decleration
+struct Command;
 /*
  * This class is used make our tree structure to store game stuff that is to be drawn
  * Often most of the stuff inside will be an entity.
@@ -37,6 +39,7 @@ class SceneNode:  public sf::Transformable , public sf::Drawable{
         sf::Transform getWorldTransform() const;
 
         virtual unsigned int getCategory() const;
+        void onCommand(const Command& command, sf::Time dt);
 
     private:
 
