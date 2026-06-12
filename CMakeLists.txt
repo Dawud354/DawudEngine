@@ -24,6 +24,8 @@ add_executable(DawudEngine main.cpp
         Command.cpp
         Command.h
         Category.h
+        CommandQueue.cpp
+        CommandQueue.h
 )
 
 target_link_libraries(DawudEngine sfml-graphics sfml-window sfml-system)
