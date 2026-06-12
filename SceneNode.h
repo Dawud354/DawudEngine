@@ -36,6 +36,8 @@ class SceneNode:  public sf::Transformable , public sf::Drawable{
         sf::Vector2f getWorldPosition() const;
         sf::Transform getWorldTransform() const;
 
+        virtual unsigned int getCategory() const;
+
     private:
 
         virtual void updateCurrent(sf::Time dt);

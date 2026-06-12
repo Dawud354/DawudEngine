@@ -3,6 +3,7 @@
 //
 
 #include "SceneNode.h"
+#include "Category.h"
 
 #include <cassert>
 
@@ -85,4 +86,9 @@ sf::Transform SceneNode::getWorldTransform() const
         transform = node->getTransform() * transform;
 
     return transform;
+}
+
+// Returns the scene category
+unsigned int SceneNode::getCategory() const {
+    return Category::Scene;
 }
