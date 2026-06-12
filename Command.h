@@ -22,7 +22,7 @@ struct Command
 };
 
 // This is used to avoid having to downcast each time we need to work on a child of SceneNode
-// Bit ugly bu
+// Bit ugly but book was right that it helps a lot later on
 template <typename GameObject, typename Function>
 std::function<void(SceneNode&, sf::Time)> derivedAction(Function fn)
 {
