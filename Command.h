@@ -10,7 +10,7 @@
 #include <functional>
 
 
-// forward declaration. Helps avoid having to write include
+// Forward declaration. Helps avoid having to write include
 class SceneNode;
 
 struct Command
