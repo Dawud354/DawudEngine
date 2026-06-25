@@ -12,6 +12,7 @@
 namespace sf
 {
     class Texture;
+    class Font;
 }
 
 namespace Textures
@@ -24,10 +25,20 @@ namespace Textures
     };
 }
 
+// I don't understand why it is here
+namespace Fonts
+{
+    enum ID
+    {
+        Main,
+    };
+}
+
 // Forward declaration and a few type definitions
 template <typename Resource, typename Identifier>
 class ResourceHolder;
 
 using TextureHolder = ResourceHolder<sf::Texture, Textures::ID>;
+using FontHolder = ResourceHolder<sf::Font, Fonts::ID>;
 
 #endif //DAWUDENGINE_RESOURCEINDENTIFIERS_H
