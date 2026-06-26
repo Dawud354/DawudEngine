@@ -18,7 +18,7 @@ StateStack::StateStack(State::Context context)
 void StateStack::update(sf::Time dt)
 {
     // Iterate from top to bottom, stop as soon as update() returns false
-    // cannot use for each as we are going from begining to end
+    // cannot use for each as we are going from beginning to end
     for (auto itr = stack.rbegin(); itr != stack.rend(); ++itr)
     {
         if (!(*itr)->update(dt))
