@@ -54,6 +54,11 @@ void World::draw()
 	mWindow.draw(mSceneGraph);
 }
 
+CommandQueue& World::getCommandQueue()
+{
+	return mCommandQueue;
+}
+
 void World::loadTextures()
 {
 	mTextures.load(Textures::Eagle, "Media/Textures/Eagle.png");

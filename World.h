@@ -16,6 +16,8 @@
 #include <array>
 #include <SFML/System/Time.hpp>
 
+#include "CommandQueue.h"
+
 
 // Forward declaration
 // Book did it to make the class more lightweight
@@ -29,6 +31,7 @@ public:
     explicit World(sf::RenderWindow& window);
     void update(sf::Time dt);
     void draw();
+    CommandQueue& getCommandQueue();
 
 
 private:
@@ -50,6 +53,7 @@ private:
 
     SceneNode mSceneGraph;
     std::array<SceneNode*, LayerCount> mSceneLayers;
+    CommandQueue mCommandQueue;
 
     sf::FloatRect mWorldBounds;
     sf::Vector2f mSpawnPosition;
