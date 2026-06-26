@@ -21,7 +21,7 @@ namespace sf
 }
 
 class StateStack;
-class Player;
+class PlayerInputHandler;
 
 class State
 {
@@ -33,12 +33,12 @@ public:
     // what a state  was and how the stack worked.
     struct Context
     {
-        Context(sf::RenderWindow& window, TextureHolder& textures, FontHolder& fonts, Player& player);
+        Context(sf::RenderWindow& window, TextureHolder& textures, FontHolder& fonts, PlayerInputHandler& player);
 
         sf::RenderWindow* window;
         TextureHolder* textures;
         FontHolder* fonts;
-        Player* player;
+        PlayerInputHandler* player;
     };
 
     State(StateStack& stack, Context context);
