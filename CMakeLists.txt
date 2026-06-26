@@ -31,6 +31,20 @@ add_executable(DawudEngine main.cpp
         StateIdentifiers.h
         StateStack.cpp
         StateStack.h
+        GameState.cpp
+        GameState.h
+        LoadingState.cpp
+        LoadingState.h
+        MenuState.cpp
+        MenuState.h
+        PauseState.cpp
+        PauseState.h
+        TitleState.cpp
+        TitleState.h
+        Utility.cpp
+        Utility.h
+        ParallelTask.cpp
+        ParallelTask.h
 )
 
 target_link_libraries(DawudEngine sfml-graphics sfml-window sfml-system)
