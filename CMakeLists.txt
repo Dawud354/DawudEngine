@@ -26,6 +26,11 @@ add_executable(DawudEngine main.cpp
         Category.h
         CommandQueue.cpp
         CommandQueue.h
+        State.cpp
+        State.h
+        StateIdentifiers.h
+        StateStack.cpp
+        StateStack.h
 )
 
 target_link_libraries(DawudEngine sfml-graphics sfml-window sfml-system)

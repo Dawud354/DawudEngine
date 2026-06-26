@@ -18,73 +18,66 @@
 #include <map>
 
 
-namespace sf
-{
+namespace sf {
     class Event;
     class RenderWindow;
 }
 
-class StateStack : private sf::NonCopyable
-{
+class StateStack : private sf::NonCopyable {
 public:
-    enum Action
-    {
+    enum Action {
         Push,
         Pop,
         Clear,
     };
 
+    explicit StateStack(State::Context context);
 
-public:
-    explicit			StateStack(State::Context context);
+    template<typename T>
+    void registerState(States::ID stateID);
 
-    template <typename T>
-    void				registerState(States::ID stateID);
+    void update(sf::Time dt);
 
-    void				update(sf::Time dt);
-    void				draw();
-    void				handleEvent(const sf::Event& event);
+    void draw();
 
-    void				pushState(States::ID stateID);
-    void				popState();
-    void				clearStates();
+    void handleEvent(const sf::Event &event);
 
-    bool				isEmpty() const;
+    void pushState(States::ID stateID);
 
+    void popState();
 
-private:
-    State::Ptr			createState(States::ID stateID);
-    void				applyPendingChanges();
+    void clearStates();
 
+    bool isEmpty() const;
 
 private:
-    struct PendingChange
-    {
-        explicit			PendingChange(Action action, States::ID stateID = States::None);
+    State::UniquePtr createState(States::ID stateID);
 
-        Action				action;
-        States::ID			stateID;
+    void applyPendingChanges();
+
+
+    struct PendingChange {
+        explicit PendingChange(Action action, States::ID stateID = States::None);
+
+        Action action;
+        States::ID stateID;
     };
 
 
-private:
-    std::vector<State::Ptr>								mStack;
-    std::vector<PendingChange>							mPendingList;
+    std::vector<State::UniquePtr> stack;
+    std::vector<PendingChange> pendingList;
 
-    State::Context										mContext;
-    std::map<States::ID, std::function<State::Ptr()>>	mFactories;
+    State::Context context;
+    std::map<States::ID, std::function<State::UniquePtr()> > factories;
 };
 
 
-template <typename T>
-void StateStack::registerState(States::ID stateID)
-{
-    mFactories[stateID] = [this] ()
-    {
-        return State::Ptr(new T(*this, mContext));
+template<typename T>
+void StateStack::registerState(States::ID stateID) {
+    factories[stateID] = [this]() {
+        return State::UniquePtr(new T(*this, context));
     };
 }
-
 
 
 #endif //DAWUDENGINE_STATESTACK_H
