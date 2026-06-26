@@ -28,8 +28,8 @@ class State
 public:
     using UniquePtr =  std::unique_ptr<State>;
 
-    // i think this just stores pointers to the stuff in my game
-    // i did not really get into the nitty gritty of chapter 5 just enough to understand
+    // I think this just stores pointers to the stuff in my game
+    // I did not really get into the nitty gritty of chapter 5 just enough to understand
     // what a state  was and how the stack worked.
     struct Context
     {
