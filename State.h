@@ -30,7 +30,7 @@ public:
 
     // i think this just stores pointers to the stuff in my game
     // i did not really get into the nitty gritty of chapter 5 just enough to understand
-    // what a the
+    // what a state  was and how the stack worked.
     struct Context
     {
         Context(sf::RenderWindow& window, TextureHolder& textures, FontHolder& fonts, Player& player);
