@@ -2,7 +2,7 @@
 // Created by dawud on 6/26/26.
 //
 
-#include "ParallelTask.h"
+#include "../../include/DawudEngine/Core/ParallelTask.h"
 
 ParallelTask::ParallelTask()
 : mThread(&ParallelTask::runTask, this)

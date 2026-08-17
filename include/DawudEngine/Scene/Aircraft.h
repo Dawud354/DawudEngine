@@ -5,8 +5,8 @@
 #ifndef DAWUDENGINE_AIRCRAFT_H
 #define DAWUDENGINE_AIRCRAFT_H
 
-#include "Entity.h"
-#include "ResourceIndentifiers.h"
+#include "../Entity.h"
+#include "../Core/ResourceIndentifiers.h"
 #include <SFML/Graphics/Sprite.hpp>
 
 

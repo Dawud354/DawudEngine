@@ -5,7 +5,7 @@
 #ifndef DAWUDENGINE_MENUSTATE_H
 #define DAWUDENGINE_MENUSTATE_H
 
-#include "State.h"
+#include "../State.h"
 
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Text.hpp>

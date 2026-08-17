@@ -5,7 +5,7 @@
 #ifndef DAWUDENGINE_GAMESTATE_H
 #define DAWUDENGINE_GAMESTATE_H
 
-#include "State.h"
+#include "../State.h"
 #include "World.h"
 #include "PlayerInputHandler.h"
 

@@ -7,7 +7,7 @@
 
 #include "State.h"
 #include "StateIdentifiers.h"
-#include "ResourceIndentifiers.h"
+#include "../Core/ResourceIndentifiers.h"
 
 #include <SFML/System/NonCopyable.hpp>
 #include <SFML/System/Time.hpp>

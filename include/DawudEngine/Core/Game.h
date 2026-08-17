@@ -9,18 +9,20 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/System/Time.hpp>
 
-#include "World.h"
+#include "../World.h"
 
 
 class Game{
 public:
     Game();
     void run();
+
 private:
     void processEvents();
     void update(sf::Time dt);
     void render();
     void handlePlayerInput(sf::Keyboard::Key key, bool isPressed);
+    void registerStates();
 
     static const float PlayerSpeed;
     static const sf::Time TimePerFrame;
