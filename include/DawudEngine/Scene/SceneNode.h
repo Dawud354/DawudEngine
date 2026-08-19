@@ -35,7 +35,8 @@ class SceneNode:  public sf::Transformable , public sf::Drawable{
         using UniquePtr = std::unique_ptr<SceneNode>;
         using Pair = std::pair<SceneNode*, SceneNode*>;
 
-        SceneNode();
+        explicit SceneNode(Category::Type category = Category::None);
+
         void attachChild(UniquePtr child);
         UniquePtr detachChild(const SceneNode& child);
 
