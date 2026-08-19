@@ -55,11 +55,12 @@ class SceneNode:  public sf::Transformable , public sf::Drawable{
         virtual bool isMarkedForRemoval() const;
         virtual bool isDestroyed() const;
 
+    protected:
+        virtual void updateCurrent(sf::Time dt,CommandQueue& commands);
 
 
     private:
 
-        virtual void updateCurrent(sf::Time dt,CommandQueue& commands);
         void updateChildren(sf::Time dt, CommandQueue& commands);
         // book made this private and override
         // I am not sure as to why though. the explanation was very complex
