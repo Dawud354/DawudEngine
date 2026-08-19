@@ -10,9 +10,11 @@
 #include <SFML/Graphics/Drawable.hpp>
 #include <SFML/System/Time.hpp>
 
+
 #include <vector>
 
 #include "Category.h"
+#include "CommandQueue.h"
 
 // forward declaration
 struct Command;
@@ -37,7 +39,7 @@ class SceneNode:  public sf::Transformable , public sf::Drawable{
         void attachChild(UniquePtr child);
         UniquePtr detachChild(const SceneNode& child);
 
-        void update(sf::Time dt);
+        void update(sf::Time dt,  CommandQueue& commands);
 
         sf::Vector2f getWorldPosition() const;
         sf::Transform getWorldTransform() const;
@@ -56,8 +58,8 @@ class SceneNode:  public sf::Transformable , public sf::Drawable{
 
     private:
 
-        virtual void updateCurrent(sf::Time dt);
-        void updateChildren(sf::Time dt);
+        virtual void updateCurrent(sf::Time dt,CommandQueue& commands);
+        void updateChildren(sf::Time dt, CommandQueue& commands);
         // book made this private and override
         // I am not sure as to why though. the explanation was very complex
         void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
