@@ -37,9 +37,23 @@ public:
     World(const World& other) = delete;
     World& operator=(const World& other) = delete;
 
+    bool hasAlivePlayer() const;
+    bool hasPlayerReachedEnd() const;
+
 private:
     void loadTextures();
+    void adaptPlayerPosition();
+    void adaptPlayerVelocity();
+    void handleCollisions();
+
     void buildScene();
+    void addEnemies();
+    void addEnemy(Aircraft::Type type, float relX, float relY);
+    void spawnEnemies();
+    void destroyEntitiesOutsideView();
+    void guideMissiles();
+    sf::FloatRect getViewBounds() const;
+    sf::FloatRect getBattlefieldBounds() const;
 
     enum class Layer
     {
@@ -48,19 +62,36 @@ private:
         LayerCount
     };
 
+    struct SpawnPoint
+    {
+        SpawnPoint(Aircraft::Type type, float x, float y)
+        : type(type)
+        , x(x)
+        , y(y)
+        {
+        }
 
-    sf::RenderWindow& mWindow;
-    sf::View mWorldView;
-    TextureHolder mTextures;
+        Aircraft::Type type;
+        float x;
+        float y;
+    };
 
-    SceneNode mSceneGraph;
-    std::array<SceneNode*, LayerCount> mSceneLayers;
-    CommandQueue mCommandQueue;
+    sf::RenderWindow& window;
+    sf::View worldView;
+    TextureHolder textures;
+    FontHolder& fonts;
 
-    sf::FloatRect mWorldBounds;
-    sf::Vector2f mSpawnPosition;
-    float mScrollSpeed;
-    Aircraft* mPlayerAircraft;
+    SceneNode sceneGraph;
+    std::array<SceneNode*, static_cast<int>(Layer::LayerCount)> sceneLayers;
+    CommandQueue commandQueue;
+
+    sf::FloatRect worldBounds;
+    sf::Vector2f spawnPosition;
+    float scrollSpeed;
+    Aircraft* playerAircraft;
+
+    std::vector<SpawnPoint> spawnPoints;
+    std::vector<Aircraft*> activeEnemies;
 };
 
 
