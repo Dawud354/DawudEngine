@@ -6,25 +6,24 @@
 #define DAWUDENGINE_PAUSESTATE_H
 
 #include "State.h"
+#include "GUI/Container.h"
 
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Text.hpp>
 
 
-class PauseState : public State
-{
+class PauseState : public State {
 public:
-    PauseState(StateStack& stack, Context context);
+    PauseState(StateStack &stack, Context context);
 
-    virtual void		draw();
-    virtual bool		update(sf::Time dt);
-    virtual bool		handleEvent(const sf::Event& event);
-
+    void draw() override;
+    bool update(sf::Time dt) override;
+    bool handleEvent(const sf::Event &event) override;
 
 private:
-    sf::Sprite			mBackgroundSprite;
-    sf::Text			mPausedText;
-    sf::Text			mInstructionText;
+    sf::Sprite backgroundSprite;
+    sf::Text pausedText;
+    GUI::Container instructionText;
 };
 
 
