@@ -7,13 +7,11 @@
 
 #include "State.h"
 #include "StateIdentifiers.h"
-#include "../Core/ResourceIndentifiers.h"
 
 #include <SFML/System/NonCopyable.hpp>
 #include <SFML/System/Time.hpp>
 
 #include <vector>
-#include <utility>
 #include <functional>
 #include <map>
 
@@ -37,24 +35,18 @@ public:
     void registerState(States::ID stateID);
 
     void update(sf::Time dt);
-
     void draw();
-
     void handleEvent(const sf::Event &event);
 
     void pushState(States::ID stateID);
-
     void popState();
-
     void clearStates();
 
     bool isEmpty() const;
 
 private:
     State::UniquePtr createState(States::ID stateID);
-
     void applyPendingChanges();
-
 
     struct PendingChange {
         explicit PendingChange(Action action, States::ID stateID = States::None);
@@ -71,7 +63,7 @@ private:
     std::map<States::ID, std::function<State::UniquePtr()> > factories;
 };
 
-
+// I need to improve my c++ skills i have no idea what any of this is
 template<typename T>
 void StateStack::registerState(States::ID stateID) {
     factories[stateID] = [this]() {
