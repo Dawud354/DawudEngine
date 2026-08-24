@@ -21,6 +21,15 @@ public:
         ActionCount
     };
 
+    enum class MissionStatus
+    {
+        MissionRunning,
+        MissionSuccess,
+        MissionFailure
+    };
+
+    PlayerInputHandler();
+
     void handleEvent(const sf::Event& event, CommandQueue& commands);
     void handleRealTimeInput(CommandQueue& commands);
 
@@ -35,6 +44,7 @@ private:
 
     std::map<sf::Keyboard::Key, Action> keyBinding;
     std::map<Action, Command> actionBinding;
+    MissionStatus currentMissionStatus;
 };
 
 
