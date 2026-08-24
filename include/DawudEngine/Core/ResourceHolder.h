@@ -8,17 +8,21 @@
 #include <string>
 #include <unordered_map>
 
-template<typename Resource, typename Identifier >
+template<typename Resource, typename Identifier>
 class ResourceHolder {
-    public:
+public:
     void load(Identifier id, const std::string &path);
+    // i forgot why this is here
+    template<typename Parameter>
+    void load(Identifier id, const std::string& filename, const Parameter& secondParam);
 
+    Resource &get(Identifier id);
+    const Resource &get(Identifier id) const;
 
-    Resource& get(Identifier id);
-    const Resource& get(Identifier id) const;
-    private:
-    std::unordered_map<Identifier, std::unique_ptr<Resource>> resourceMap;
+private:
+    void insertResource(Identifier id, std::unique_ptr<Resource> resource);
 
+    std::unordered_map<Identifier, std::unique_ptr<Resource> > resourceMap;
 };
 
 // This is here as for templates we cannot have a cpp file,

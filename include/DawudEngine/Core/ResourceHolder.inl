@@ -16,10 +16,18 @@ const std::string& path)
         throw std::runtime_error("ResourceHolder::load - Failed to  load " + path);
 
     // insert and check status
-    auto inserted = resourceMap.insert(std::make_pair(id, std::move(resource)));
-    assert(inserted.second);
+    insertResource(id, std::move(resource));
 }
 
+template <typename Resource, typename Identifier>
+template <typename Parameter>
+void ResourceHolder<Resource, Identifier>::load(Identifier id, const std::string& filename, const Parameter& secondParam) {
+    // create and load resource
+    std::unique_ptr<Resource> resource(new Resource());
+    if (!resource->loadFromFile(filename, secondParam))
+        throw std::runtime_error("ResourceHolder::load - Failed to  load " + filename);
+    insertResource(id, std::move(resource));
+}
 
 template <typename Resource, typename Identifier>
 Resource& ResourceHolder<Resource, Identifier>::get(Identifier id) {
@@ -36,4 +44,17 @@ const Resource& ResourceHolder<Resource, Identifier>::get(Identifier id) const {
     assert(found != resourceMap.end());
     return *found->second;
 }
+
+// less repeated lines
+template <typename Resource, typename Identifier>
+void ResourceHolder<Resource, Identifier>::insertResource(Identifier id, std::unique_ptr<Resource> resource)
+{
+    // Insert and check success
+    auto inserted = resourceMap.insert(std::make_pair(id, std::move(resource)));
+    assert(inserted.second);
+}
+
 #endif //DAWUDENGINE_RESOURCEHOLDER_INL
+
+
+
