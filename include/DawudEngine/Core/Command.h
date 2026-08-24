@@ -15,16 +15,19 @@ class SceneNode;
 
 struct Command
 {
+    // kinda cool i can make a using in a struct
+    using Action = std::function<void(SceneNode&, sf::Time)>;
+
     Command();
 
-    std::function<void(SceneNode&, sf::Time)>	action;
-    unsigned int								category;
+    Action action;
+    unsigned int category;
 };
 
 // This is used to avoid having to downcast each time we need to work on a child of SceneNode
 // Bit ugly but book was right that it helps a lot later on
 template <typename GameObject, typename Function>
-std::function<void(SceneNode&, sf::Time)> derivedAction(Function fn)
+Command::Action derivedAction(Function fn)
 {
     return [=] (SceneNode& node, sf::Time dt)
     {
