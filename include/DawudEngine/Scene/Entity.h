@@ -26,7 +26,7 @@ public:
     bool isDestroyed() const override;
 
 protected:
-    virtual void updateCurrent(sf::Time dt, CommandQueue& commands);
+    void updateCurrent(sf::Time dt, CommandQueue& commands) override;
 
 
 private:
