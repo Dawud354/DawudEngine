@@ -33,13 +33,15 @@ public:
     void draw();
     CommandQueue& getCommandQueue();
 
+    // delete copy constructor
+    World(const World& other) = delete;
+    World& operator=(const World& other) = delete;
 
 private:
     void loadTextures();
     void buildScene();
 
-    // TODO: Change this to an enum class
-    enum Layer
+    enum class Layer
     {
         Background,
         Air,
