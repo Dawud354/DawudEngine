@@ -11,22 +11,20 @@
 #include <SFML/Graphics/Text.hpp>
 
 
-class TitleState : public State
-{
+class TitleState : public State {
 public:
-    TitleState(StateStack& stack, Context context);
+    TitleState(StateStack &stack, Context context);
 
-    virtual void		draw();
-    virtual bool		update(sf::Time dt);
-    virtual bool		handleEvent(const sf::Event& event);
-
+    void draw() override;
+    bool update(sf::Time dt) override;
+    bool handleEvent(const sf::Event &event) override;
 
 private:
-    sf::Sprite			mBackgroundSprite;
-    sf::Text			mText;
+    sf::Sprite backgroundSprite;
+    sf::Text titleText;
 
-    bool				mShowText;
-    sf::Time			mTextEffectTime;
+    bool showText;
+    sf::Time textEffectTime;
 };
 
 #endif //DAWUDENGINE_TITLESTATE_H
