@@ -15,7 +15,7 @@ class Aircraft;
 
 class Pickup : public Entity {
 public:
-    enum Type {
+    enum class Type {
         HealthRefill,
         MissileRefill,
         FireSpread,
