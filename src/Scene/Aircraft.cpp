@@ -19,7 +19,7 @@
 
 // creates like a local private variable that only this file can access
 namespace {
-    const std::vector<AircraftData> Table = initializeAircraftData();
+    const std::vector<AircraftData> Table = initialiseAircraftData();
 
     // i guess now i know how to make local helper functions that are hidden
     // idk how much this helps but at least know i don't have to remember how to write static cast properly

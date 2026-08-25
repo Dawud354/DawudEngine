@@ -45,9 +45,9 @@ struct PickupData {
 };
 
 
-std::vector<AircraftData> initializeAircraftData();
-std::vector<ProjectileData> initializeProjectileData();
-std::vector<PickupData> initializePickupData();
+std::vector<AircraftData> initialiseAircraftData();
+std::vector<ProjectileData> initialiseProjectileData();
+std::vector<PickupData> initialisePickupData();
 
 
 #endif //DAWUDENGINE_DATATABLES_H

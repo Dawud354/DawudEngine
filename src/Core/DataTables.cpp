@@ -26,7 +26,7 @@ namespace {
 }
 
 // The book used push_back but clion told me to use emplace_back cos it is faster
-std::vector<AircraftData> initializeAircraftData()
+std::vector<AircraftData> initialiseAircraftData()
 {
     std::vector<AircraftData> data(TypeToInt(Aircraft::Type::TypeCount));
 
@@ -56,7 +56,7 @@ std::vector<AircraftData> initializeAircraftData()
     return data;
 }
 
-std::vector<ProjectileData> initializeProjectileData() {
+std::vector<ProjectileData> initialiseProjectileData() {
     std::vector<ProjectileData> data(TypeToInt(Projectile::Type::TypeCount));
 
     data[TypeToInt(Projectile::Type::AlliedBullet)].damage = 10;
@@ -74,7 +74,7 @@ std::vector<ProjectileData> initializeProjectileData() {
     return data;
 }
 
-std::vector<PickupData> initializePickupData() {
+std::vector<PickupData> initialisePickupData() {
     std::vector<PickupData> data(TypeToInt(Pickup::Type::TypeCount));
     
     data[TypeToInt(Pickup::Type::HealthRefill)].texture = Textures::HealthRefill;
