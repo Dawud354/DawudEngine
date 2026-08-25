@@ -79,7 +79,7 @@ sf::Vector2f SceneNode::getWorldPosition() const
 }
 
 // This method goes through each parent until it gets to root
-// It applied all the nodes transformations to get the world transforamation
+// It applied all the nodes transformations to get the world transformation
 sf::Transform SceneNode::getWorldTransform() const
 {
     sf::Transform transform = sf::Transform::Identity;
