@@ -18,7 +18,7 @@ namespace GUI {
 
         Container();
 
-        void pack(Component::SharedPtr component);
+        void pack(const Component::SharedPtr& component);
 
         bool isSelectable() const override;
         void handleEvent(const sf::Event &event) override;
