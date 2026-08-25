@@ -36,7 +36,7 @@ public:
     float getMaxSpeed() const;
 
     void increaseFireRate();
-    void increaseSpeed();
+    void increaseSpread();
     void collectMissiles(unsigned int count);
 
     void fire();
