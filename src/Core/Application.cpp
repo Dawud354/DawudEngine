@@ -3,7 +3,7 @@
 // This is the main loop of the engine
 //
 
-#include "Game.h"
+#include "Application.h"
 #include "ResourceHolder.h"
 
 #include <iostream>
@@ -11,11 +11,11 @@
 
 // set the constants here
 // not sure why here but the SFMl game dev book did it here
-const float Game::PlayerSpeed = 100.f;
-const sf::Time Game::TimePerFrame = sf::seconds(1.f/60.f);
+const float Application::PlayerSpeed = 100.f;
+const sf::Time Application::TimePerFrame = sf::seconds(1.f/60.f);
 
 
-Game::Game()
+Application::Application()
 : mainWindow(sf::VideoMode(640, 480), "SFML Application")
 , world(mainWindow)
 {
@@ -24,7 +24,7 @@ Game::Game()
 /*
  * Used to start the engine
  */
-void Game::run()
+void Application::run()
 {
     // make a clock so we can track the time between each frame
     sf::Clock clock;
@@ -50,7 +50,7 @@ void Game::run()
     }
 }
 
-void Game::processEvents() {
+void Application::processEvents() {
     sf::Event e;
     while (mainWindow.pollEvent(e)) {
         switch (e.type) {
@@ -69,11 +69,11 @@ void Game::processEvents() {
     }
 }
 
-void Game::update(sf::Time dt){
+void Application::update(sf::Time dt){
     world.update(dt);
 }
 
-void Game::render() {
+void Application::render() {
     mainWindow.clear();
     world.draw();
 
@@ -81,6 +81,6 @@ void Game::render() {
     mainWindow.display();
 }
 
-void Game::handlePlayerInput(sf::Keyboard::Key key, bool isPressed) {
+void Application::handlePlayerInput(sf::Keyboard::Key key, bool isPressed) {
 }
 
