@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "Game.h"
+#include "Application.h"
 
 
 
@@ -13,7 +13,7 @@ int main() {
         std::cout << "i = " << i << std::endl;
     }
 
-    Game game;
+    Application game;
     game.run();
 
 
