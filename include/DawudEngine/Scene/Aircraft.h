@@ -27,7 +27,7 @@ public:
     };
 
 
-    Aircraft(Type type, const TextureHolder& textures);
+    Aircraft(Type type, const TextureHolder& textures,  const FontHolder& fonts);
 
     unsigned int getCategory() const override;
     sf::FloatRect getBoundingRect() const override;
