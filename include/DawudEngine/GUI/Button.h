@@ -23,8 +23,8 @@ namespace GUI {
 
         Button(const FontHolder &fonts, const TextureHolder &textures);
 
-        void setCallback(Callback callback);
-        void setText(const std::string &text);
+        void setCallback(Callback newCallback);
+        void setText(const std::string& newText);
         void setToggle(bool flag);
 
         bool isSelectable() const override;
