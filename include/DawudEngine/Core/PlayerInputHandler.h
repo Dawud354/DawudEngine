@@ -36,6 +36,9 @@ public:
     void assignKey(Action action, sf::Keyboard::Key key);
     sf::Keyboard::Key getAssignedKey(Action action) const;
 
+    void setMissionStatus(MissionStatus status);
+    MissionStatus getMissionStatus() const;
+
 private:
     void initialiseActions();
     // reason it is static is cos in C++ a convention is to label helper
