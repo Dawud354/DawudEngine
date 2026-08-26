@@ -18,8 +18,6 @@ public:
     bool update(sf::Time dt) override;
     bool handleEvent(const sf::Event &event) override;
 
-    void updateOptionText();
-
 private:
     sf::Sprite backgroundSprite;
     GUI::Container GUIContainer;
