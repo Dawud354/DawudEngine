@@ -2,9 +2,12 @@
 // Created by dawud on 6/26/26.
 //
 
-#include "../../include/DawudEngine/State/PauseState.h"
+#include "State/PauseState.h"
 #include "Utility.h"
 #include "ResourceHolder.h"
+#include "GUI/Button.h"
+#include "State/StateIdentifiers.h"
+
 
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
@@ -13,23 +16,33 @@
 
 PauseState::PauseState(StateStack& stack, Context context)
 : State(stack, context)
-, mBackgroundSprite()
-, mPausedText()
-, mInstructionText()
+, backgroundSprite()
+, pausedText()
+, GUIContainer()
 {
     sf::Font& font = context.fonts->get(Fonts::Main);
-    sf::Vector2f viewSize = context.window->getView().getSize();
+    sf::Vector2f windowSize (context.window->getSize());
 
-    mPausedText.setFont(font);
-    mPausedText.setString("Game Paused");
-    mPausedText.setCharacterSize(70);
-    centerOrigin(mPausedText);
-    mPausedText.setPosition(0.5f * viewSize.x, 0.4f * viewSize.y);
+    pausedText.setFont(font);
+    pausedText.setString("Game Paused");
+    pausedText.setCharacterSize(70);
+    centerOrigin(pausedText);
+    pausedText.setPosition(0.5f * windowSize.x, 0.4f * windowSize.y);
 
-    mInstructionText.setFont(font);
-    mInstructionText.setString("(Press Backspace to return to the main menu)");
-    centerOrigin(mInstructionText);
-    mInstructionText.setPosition(0.5f * viewSize.x, 0.6f * viewSize.y);
+    auto returnButton  = std::make_shared<GUI::Button>(*context.fonts, *context.textures);
+    returnButton-> setPosition(0.5f * windowSize.x - 100, 0.4f * windowSize.y + 75);
+    returnButton->setText("Return");
+    returnButton->setCallback( [this] () {
+        requestStackPop();
+    });
+
+    auto backToMenuButton  = std::make_shared<GUI::Button>(*context.fonts, *context.textures);
+    backToMenuButton-> setPosition(0.5f * windowSize.x - 100, 0.4f * windowSize.y + 125);
+    backToMenuButton->setText("Back to Menu");
+    backToMenuButton->setCallback( [this] () {
+        requestStateClear();
+        requestStackPush(States::Menu);
+    });
 }
 
 void PauseState::draw()
@@ -42,8 +55,8 @@ void PauseState::draw()
     backgroundShape.setSize(window.getView().getSize());
 
     window.draw(backgroundShape);
-    window.draw(mPausedText);
-    window.draw(mInstructionText);
+    window.draw(pausedText);
+    window.draw(GUIContainer);
 }
 
 bool PauseState::update(sf::Time)
@@ -53,21 +66,6 @@ bool PauseState::update(sf::Time)
 
 bool PauseState::handleEvent(const sf::Event& event)
 {
-    if (event.type != sf::Event::KeyPressed)
-        return false;
-
-    if (event.key.code == sf::Keyboard::Escape)
-    {
-        // Escape pressed, remove itself to return to the game
-        requestStackPop();
-    }
-
-    if (event.key.code == sf::Keyboard::BackSpace)
-    {
-        // Escape pressed, remove itself to return to the game
-        requestStateClear();
-        requestStackPush(States::Menu);
-    }
-
+    GUIContainer.handleEvent(event);
     return false;
 }
