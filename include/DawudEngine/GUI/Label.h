@@ -16,10 +16,10 @@ namespace GUI {
     public:
         using SharedPtr =  std::shared_ptr<Label>;
 
-        Label(const std::string &text, const FontHolder &fonts);
+        Label(const std::string& text, const FontHolder &fonts);
 
         bool isSelectable() const override;
-        void setText(const std::string &text);
+        void setText(const std::string&  newText);
 
         void handleEvent(const sf::Event &event) override;
 
