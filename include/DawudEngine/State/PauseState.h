@@ -23,7 +23,7 @@ public:
 private:
     sf::Sprite backgroundSprite;
     sf::Text pausedText;
-    GUI::Container instructionText;
+    GUI::Container GUIContainer;
 };
 
 
