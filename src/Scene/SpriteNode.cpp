@@ -8,8 +8,9 @@
 
 /*
  * All copied from SFML book
- * IDK why most methods are empty but it is something to do with the way the code was constructed
- * It makes
+ * IDK why most methods are empty but it is something to do with the way the code was constructed.
+ * It makes a bit of sense since this is just the parent class and not really meant to be actually
+ * constructed.
  */
 
 SpriteNode::SpriteNode(const sf::Texture& texture)
