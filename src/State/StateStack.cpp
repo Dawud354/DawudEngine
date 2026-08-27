@@ -2,9 +2,10 @@
 // Created by dawud on 6/25/26.
 //
 
-#include "StateStack.h"
+#include "State//StateStack.h"
 
 #include <cassert>
+#include <ranges>
 
 
 StateStack::StateStack(State::Context context)
@@ -19,9 +20,9 @@ void StateStack::update(sf::Time dt)
 {
     // Iterate from top to bottom, stop as soon as update() returns false
     // cannot use for each as we are going from beginning to end
-    for (auto itr = stack.rbegin(); itr != stack.rend(); ++itr)
+    for (const auto & itr : std::views::reverse(stack))
     {
-        if (!(*itr)->update(dt))
+        if (!itr->update(dt))
             break;
     }
 
@@ -31,16 +32,16 @@ void StateStack::update(sf::Time dt)
 void StateStack::draw()
 {
     // Draw all active states from bottom to top
-    for(State::UniquePtr& state: stack)
+    for(const State::UniquePtr& state: stack)
         state->draw();
 }
 
 void StateStack::handleEvent(const sf::Event& event)
 {
     // Iterate from top to bottom, stop as soon as handleEvent() returns false
-    for (auto itr = stack.rbegin(); itr != stack.rend(); ++itr)
+    for (const auto & itr : std::views::reverse(stack))
     {
-        if (!(*itr)->handleEvent(event))
+        if (!itr->handleEvent(event))
             break;
     }
 
@@ -49,17 +50,17 @@ void StateStack::handleEvent(const sf::Event& event)
 
 void StateStack::pushState(States::ID stateID)
 {
-    pendingList.push_back(PendingChange(Push, stateID));
+    pendingList.emplace_back(Push, stateID);
 }
 
 void StateStack::popState()
 {
-    pendingList.push_back(PendingChange(Pop));
+    pendingList.emplace_back(Pop);
 }
 
 void StateStack::clearStates()
 {
-    pendingList.push_back(PendingChange(Clear));
+    pendingList.emplace_back(Clear);
 }
 
 bool StateStack::isEmpty() const
@@ -77,7 +78,7 @@ State::UniquePtr StateStack::createState(States::ID stateID)
 
 void StateStack::applyPendingChanges()
 {
-    for (PendingChange change :  pendingList)
+    for (const PendingChange change :  pendingList)
     {
         switch (change.action)
         {
