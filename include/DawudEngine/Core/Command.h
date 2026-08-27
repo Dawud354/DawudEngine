@@ -8,6 +8,7 @@
 #include <SFML/System/Time.hpp>
 
 #include <functional>
+#include <cassert>
 
 
 // Forward declaration. Helps avoid having to write include
