@@ -30,13 +30,13 @@ private:
     void updateLabels();
     void addButtonLabel(PlayerInputHandler::Action action, float y, const std::string &text, Context context);
 
-    sf::Sprite mBackgroundSprite;
-    GUI::Container mGUIContainer;
+    sf::Sprite backgroundSprite;
+    GUI::Container GUIContainer;
 
     // I added the using so the lines below wouldn't be so long and hard to read
     using Action = PlayerInputHandler::Action;
-    std::array<GUI::Button::SharedPtr, static_cast<int>(Action::ActionCount)> mBindingButtons;
-    std::array<GUI::Label::SharedPtr, static_cast<int>(Action::ActionCount)> mBindingLabels;
+    std::array<GUI::Button::SharedPtr, static_cast<int>(Action::ActionCount)> bindingButtons;
+    std::array<GUI::Label::SharedPtr, static_cast<int>(Action::ActionCount)> bindingLabels;
 };
 
 
