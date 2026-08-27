@@ -2,7 +2,7 @@
 // Created by dawud on 6/26/26.
 //
 
-#include "TitleState.h"
+#include "State/TitleState.h"
 #include "Utility.h"
 #include "ResourceHolder.h"
 
@@ -11,35 +11,35 @@
 
 TitleState::TitleState(StateStack& stack, Context context)
 : State(stack, context)
-, mText()
-, mShowText(true)
-, mTextEffectTime(sf::Time::Zero)
+, titleText()
+, showText(true)
+, textEffectTime(sf::Time::Zero)
 {
-    mBackgroundSprite.setTexture(context.textures->get(Textures::TitleScreen));
+    backgroundSprite.setTexture(context.textures->get(Textures::TitleScreen));
 
-    mText.setFont(context.fonts->get(Fonts::Main));
-    mText.setString("Press any key to start");
-    centerOrigin(mText);
-    mText.setPosition(context.window->getView().getSize() / 2.f);
+    titleText.setFont(context.fonts->get(Fonts::Main));
+    titleText.setString("Press any key to start");
+    centerOrigin(titleText);
+    titleText.setPosition(context.window->getView().getSize() / 2.f);
 }
 
 void TitleState::draw()
 {
     sf::RenderWindow& window = *getContext().window;
-    window.draw(mBackgroundSprite);
+    window.draw(backgroundSprite);
 
-    if (mShowText)
-        window.draw(mText);
+    if (showText)
+        window.draw(titleText);
 }
 
 bool TitleState::update(sf::Time dt)
 {
-    mTextEffectTime += dt;
+    textEffectTime += dt;
 
-    if (mTextEffectTime >= sf::seconds(0.5f))
+    if (textEffectTime >= sf::seconds(0.5f))
     {
-        mShowText = !mShowText;
-        mTextEffectTime = sf::Time::Zero;
+        showText = !showText;
+        textEffectTime = sf::Time::Zero;
     }
 
     return true;
