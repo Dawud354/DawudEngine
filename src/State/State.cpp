@@ -2,10 +2,10 @@
 // Created by dawud on 6/25/26.
 //
 
-#include "State.h"
-#include "StateStack.h"
+#include "State/State.h"
+#include "State/StateStack.h"
 
-State::Context::Context(sf::RenderWindow& window, TextureHolder& textures, FontHolder& fonts, Player& player)
+State::Context::Context(sf::RenderWindow& window, TextureHolder& textures, FontHolder& fonts, PlayerInputHandler& player)
 : window(&window)
 , textures(&textures)
 , fonts(&fonts)
