@@ -15,7 +15,7 @@ class TextNode : public SceneNode
 public:
     explicit TextNode(const FontHolder& fonts, const std::string& text);
 
-    void setString(const std::string& text);
+    void setString(const std::string& newText);
 
 protected:
     void drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const override;
