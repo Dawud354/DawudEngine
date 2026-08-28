@@ -122,7 +122,7 @@ void SceneNode::checkSceneCollision(SceneNode &sceneGraph, std::set<Pair> &colli
     checkNodeCollision(sceneGraph, collisionPairs);
 
     // check children
-    for (const UniquePtr &child: children)
+    for (const UniquePtr &child: sceneGraph.children)
         checkSceneCollision(*child, collisionPairs);
 }
 
@@ -131,7 +131,7 @@ void SceneNode::checkNodeCollision(SceneNode &node, std::set<Pair> &collisionPai
         collisionPairs.insert(std::minmax(this, &node));
 
     for (const UniquePtr &child: children)
-        child->checkNodeCollision(*this, collisionPairs);
+        child->checkNodeCollision(node, collisionPairs);
 }
 
 void SceneNode::removeWrecks() {
