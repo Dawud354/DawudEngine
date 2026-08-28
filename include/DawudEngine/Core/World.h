@@ -90,7 +90,7 @@ private:
     float scrollSpeed;
     Aircraft* playerAircraft;
 
-    std::vector<SpawnPoint> spawnPoints;
+    std::vector<SpawnPoint> enemySpawnPoints;
     std::vector<Aircraft*> activeEnemies;
 };
 
