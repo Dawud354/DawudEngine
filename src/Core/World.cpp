@@ -66,7 +66,7 @@ void World::update(sf::Time dt) {
     guideMissiles();
 
     // forward commands to the scene graph
-    while (commandQueue.isEmpty())
+    while (!commandQueue.isEmpty())
         sceneGraph.onCommand(commandQueue.pop(), dt);
 
     // adapt velocity (scrolling, diagonal correction)
