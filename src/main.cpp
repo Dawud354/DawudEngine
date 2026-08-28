@@ -13,8 +13,15 @@ int main() {
         std::cout << "i = " << i << std::endl;
     }
 
-    Application game;
-    game.run();
+    try
+    {
+        Application app;
+        app.run();
+    }
+    catch (std::exception& e)
+    {
+        std::cout << "\nEXCEPTION: " << e.what() << std::endl;
+    }
 
 
     return 0;
