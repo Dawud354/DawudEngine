@@ -104,16 +104,16 @@ bool World::hasPlayerReachedEnd() const {
 void World::loadTextures() {
     textures.load(Textures::Eagle, "Media/Textures/Eagle.png");
     textures.load(Textures::Raptor, "Media/Textures/Raptor.png");
-    textures.load(Textures::Raptor, "Media/Textures/Avenger.png");
+    textures.load(Textures::Avenger, "Media/Textures/Avenger.png");
     textures.load(Textures::Desert, "Media/Textures/Desert.png");
 
-    textures.load(Textures::Raptor, "Media/Textures/Bullet.png");
-    textures.load(Textures::Raptor, "Media/Textures/Missile.png");
+    textures.load(Textures::Bullet, "Media/Textures/Bullet.png");
+    textures.load(Textures::Missile, "Media/Textures/Missile.png");
 
-    textures.load(Textures::Raptor, "Media/Textures/HealthRefill.png");
-    textures.load(Textures::Raptor, "Media/Textures/MissileRefill.png");
-    textures.load(Textures::Raptor, "Media/Textures/FireSpread.png");
-    textures.load(Textures::Raptor, "Media/Textures/FireRate.png");
+    textures.load(Textures::HealthRefill, "Media/Textures/HealthRefill.png");
+    textures.load(Textures::MissileRefill, "Media/Textures/MissileRefill.png");
+    textures.load(Textures::FireSpread, "Media/Textures/FireSpread.png");
+    textures.load(Textures::FireRate, "Media/Textures/FireRate.png");
 }
 
 void World::adaptPlayerPosition() {
