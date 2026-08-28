@@ -35,7 +35,7 @@ Application::Application()
     //I think this is to stop me spamming fire
     mainWindow. setKeyRepeatEnabled(false);
 
-    fonts.load(Fonts::Main, "Media/Sansation.tff");
+    fonts.load(Fonts::Main, "Media/Sansation.ttf");
 
     textures.load(Textures::TitleScreen, "Media/Textures/TitleScreen.png");
     textures.load(Textures::ButtonNormal,"Media/Textures/ButtonNormal.png");
