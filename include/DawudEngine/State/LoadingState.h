@@ -5,8 +5,8 @@
 #ifndef DAWUDENGINE_LOADINGSTATE_H
 #define DAWUDENGINE_LOADINGSTATE_H
 
-#include "../State.h"
-#include "../Core/ParallelTask.h"
+#include "State.h"
+#include "ParallelTask.h"
 
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/Text.hpp>

@@ -6,8 +6,8 @@
 #define DAWUDENGINE_STATE_H
 
 
-#include "../Core/ResourceIndentifiers.h"
-#include "../StateIdentifiers.h"
+#include "ResourceIndentifiers.h"
+#include "State/StateIdentifiers.h"
 
 #include <SFML/System/Time.hpp>
 #include <SFML/Window/Event.hpp>
