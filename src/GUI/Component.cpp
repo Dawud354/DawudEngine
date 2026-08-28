@@ -38,5 +38,3 @@ namespace GUI {
         mIsActive = false;
     }
 }
-
-}
