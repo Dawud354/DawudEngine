@@ -28,14 +28,14 @@ namespace sf
 
 class World {
 public:
-    explicit World(sf::RenderWindow& window);
+    explicit World(sf::RenderWindow& window, FontHolder& fonts);
     void update(sf::Time dt);
     void draw();
-    CommandQueue& getCommandQueue();
-
     // delete copy constructor
     World(const World& other) = delete;
     World& operator=(const World& other) = delete;
+
+    CommandQueue& getCommandQueue();
 
     bool hasAlivePlayer() const;
     bool hasPlayerReachedEnd() const;
