@@ -38,19 +38,19 @@ std::vector<AircraftData> initialiseAircraftData()
     data[TypeToInt(Aircraft::Type::Raptor)].hitpoints = 20;
     data[TypeToInt(Aircraft::Type::Raptor)].speed = 80.f;
     data[TypeToInt(Aircraft::Type::Raptor)].texture = Textures::Raptor;
-    data[TypeToInt(Aircraft::Type::Raptor)].directions.emplace_back(+45.f, 80.f);
-    data[TypeToInt(Aircraft::Type::Raptor)].directions.emplace_back(-45.f, 160.f);
-    data[TypeToInt(Aircraft::Type::Raptor)].directions.emplace_back(+45.f, 80.f);
+    data[TypeToInt(Aircraft::Type::Raptor)].directions.emplace_back(+45.f, 5000.f);
+    data[TypeToInt(Aircraft::Type::Raptor)].directions.emplace_back(-45.f, 10000.f);
+    data[TypeToInt(Aircraft::Type::Raptor)].directions.emplace_back(+45.f, 5000.f);
     data[TypeToInt(Aircraft::Type::Raptor)].fireInterval = sf::Time::Zero;
 
     data[TypeToInt(Aircraft::Type::Avenger)].hitpoints = 40;
     data[TypeToInt(Aircraft::Type::Avenger)].speed = 50.f;
     data[TypeToInt(Aircraft::Type::Avenger)].texture = Textures::Avenger;
-    data[TypeToInt(Aircraft::Type::Avenger)].directions.emplace_back(+45.f,  50.f);
-    data[TypeToInt(Aircraft::Type::Avenger)].directions.emplace_back( 0.f,  50.f);
-    data[TypeToInt(Aircraft::Type::Avenger)].directions.emplace_back(-45.f, 100.f);
-    data[TypeToInt(Aircraft::Type::Avenger)].directions.emplace_back( 0.f,  50.f);
-    data[TypeToInt(Aircraft::Type::Avenger)].directions.emplace_back(+45.f,  50.f);
+    data[TypeToInt(Aircraft::Type::Avenger)].directions.emplace_back(+45.f,  1500.f);
+    data[TypeToInt(Aircraft::Type::Avenger)].directions.emplace_back( 0.f,  1500.f);
+    data[TypeToInt(Aircraft::Type::Avenger)].directions.emplace_back(-45.f, 3000.f);
+    data[TypeToInt(Aircraft::Type::Avenger)].directions.emplace_back( 0.f,  1500.f);
+    data[TypeToInt(Aircraft::Type::Avenger)].directions.emplace_back(+45.f,  1500.f);
     data[TypeToInt(Aircraft::Type::Avenger)].fireInterval = sf::seconds(2);
 
     return data;
