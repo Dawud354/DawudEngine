@@ -89,4 +89,6 @@ std::vector<PickupData> initialisePickupData() {
 	
     data[TypeToInt(Pickup::Type::FireRate)].texture = Textures::FireRate;
     data[TypeToInt(Pickup::Type::FireRate)].action = std::bind(&Aircraft::increaseFireRate, _1);
+
+    return data;
 }
